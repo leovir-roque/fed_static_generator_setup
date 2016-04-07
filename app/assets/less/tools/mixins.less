@@ -1,0 +1,319 @@
+/**
+ * Transition
+ */
+.transition (@time: 1s, @ease: linear, @prop: all) {
+    -webkit-transition: @prop @time @ease;
+    transition: @prop @time @ease;
+}
+.transition-delay (@delay: 1s) {
+    -webkit-transition-delay: @delay;
+    transition-delay: @delay;
+}
+
+/**
+ * Animation
+ */
+.animation(@animation) {
+    -webkit-animation: @animation;
+    animation: @animation;
+}
+
+.animated(@duration:1s){ // overload the animated class by Dan Eden so we can define a duration
+    -webkit-animation-duration: @duration;
+       -moz-animation-duration: @duration;
+         -o-animation-duration: @duration;
+            animation-duration: @duration;
+    -webkit-animation-fill-mode: both;
+       -moz-animation-fill-mode: both;
+         -o-animation-fill-mode: both;
+            animation-fill-mode: both;
+}
+
+.animation(@name, @duration: 300ms, @iteration-count: 1, @animation-fill-mode: both, @ease: linear) {
+    -webkit-animation: @name @duration @ease @iteration-count @animation-fill-mode;
+    animation: @name @duration @ease @iteration-count @animation-fill-mode;
+}
+
+.animation-delay (@delay: 1s) {
+    animation-delay: @delay; /* W3C and Opera */
+    -moz-animation-delay: @delay; /* Firefox */
+    -webkit-animation-delay: @delay; /* Safari and Chrome */
+}
+
+.keyframes(@name, @content) {
+    @-webkit-keyframes @name {
+        @content();
+    }
+
+    @keyframes @name {
+        @content();
+    }
+}
+
+/**
+ * Transform
+ */
+.transform(...) {
+    -webkit-transform: @arguments;
+    -moz-transform: @arguments;
+    -ms-transform: @arguments;
+    transform: @arguments;
+}
+
+/**
+ * Flex
+ */
+.flex(@flexDisplay: flex) {
+   .ms-flex(@flexDisplay);
+   display:~'-webkit-@{flexDisplay}';
+   display: @flexDisplay;
+}
+
+.flex-grow(@proportion) {
+    -ms-flex-grow: @proportion;
+    -webkit-flex-grow: @proportion;
+    flex-grow: @proportion;
+}
+
+.flex-shrink(@proportion) {
+    -ms-flex-shrink: @proportion;
+    -webkit-flex-shrink: @proportion;
+    flex-shrink: @proportion;
+}
+
+.flex-basis(@proportion) {
+    -ms-flex-basis: @proportion;
+    -webkit-flex-basis: @proportion;
+    flex-basis: @proportion;
+}
+
+.flex-justify-content(@justifyStyle) {
+    .ms-flex-justify(@justifyStyle);
+    -webkit-justify-content: @justifyStyle;
+    justify-content: @justifyStyle;
+}
+
+.flex-direction(@direction) {
+    -ms-flex-direction:@direction;
+    -webkit-flex-direction:@direction;
+    flex-direction:@direction;
+}
+
+.flex-align-items(@alignStyle) {
+    -ms-flex-align:@alignStyle;
+    -webkit-align-items:@alignStyle;
+    align-items: @alignStyle;
+}
+
+.flex-align-self(@selfAlignStyle) {
+    .ms-flex-align-self(@selfAlignStyle);
+    -webkit-align-self:@selfAlignStyle;
+    align-self: @selfAlignStyle;
+}
+
+.flex-order(@order) {
+    -ms-flex-order:@order;
+    -webkit-order:@order;
+    order:@order;
+}
+
+.flex-wrap(@wrap) {
+    -ms-flex-wrap:@wrap;
+    -webkit-flex-wrap:@wrap;
+    flex-wrap:@wrap;
+}
+
+/* These are the conditional mixins for the different syntaxes Flexbox*/
+.ms-flex(@msFlex) {
+    & when (@msFlex = flex) {
+        display: -ms-flexbox;
+    }
+
+    & when (@msFlex = inline-flex) {
+        display: -ms-inline-flexbox;
+    }
+}
+
+.ms-flex-justify(@msJustify) {
+    & when (@msJustify = space-between) {
+     -ms-flex-pack: justify;
+    }
+
+    & when (@msJustify = space-around) {
+        -ms-flex-pack: distribute;
+    }
+
+    & when (@msJustify = flex-end) {
+        -ms-flex-pack: end;
+    }
+
+    & when (@msJustify = flex-start) {
+        -ms-flex-pack: start;
+    }
+
+    & when (@msJustify = center) {
+        -ms-flex-pack: center;
+    }
+}
+
+.ms-flex-align-self(@msSelfAlign) {
+    &when (@msSelfAlign = flex-end) {
+        -ms-flex-item-align: end;
+    }
+
+    &when (@msSelfAlign = flex-start) {
+        -ms-flex-item-align: start;
+    }
+
+    &when (@msSelfAlign = auto), (@msSelfAlign = center),(@msSelfAlign = baseline), (@msSelfAlign = stretch) {
+        -ms-flex-item-align: @msSelfAlign;
+    }
+}
+
+// You will generally need to apply the basis value for this to work in IE10
+.flex-shorthand(@flexGrow:0; @flexShrink:0; @flexBasis:0) {
+    -ms-flex: @arguments;
+    -webkit-flex: @arguments;
+    flex: @arguments;
+}
+
+/**
+ * Gradients
+ */
+.linear-gradient(@direction, @startColor: #fff, @endColor: #000) {
+    background-color: @startColor;
+    background-image: -webkit-linear-gradient(@direction, @startColor, @endColor);
+    background-image: -moz-linear-gradient(@direction, @startColor, @endColor);
+    background-image: -o-linear-gradient(@direction, @startColor, @endColor);
+    background-image: linear-gradient(@direction, @startColor, @endColor);
+}
+
+.radial-gradient(@startColor: #fff, @endColor: #000){
+    background: @startColor;
+    background: -webkit-gradient(radial, center center, 0, center center, 460, from(@startColor), to(@endColor));
+    background: -webkit-radial-gradient(circle, @startColor, @endColor);
+    background: radial-gradient(circle, @startColor, @endColor)
+}
+
+/**
+ * Alignment using Position
+ */
+.vertical-align(@pos:absolute) {
+    position: @pos;
+    top: 50%;
+    .transform(translateY(-50%));
+}
+
+.horizontal-align(@pos:absolute) {
+    position: @pos;
+    left: 50%;
+    .transform(translateX(-50%));
+}
+
+.horizontal-vertical-align(@pos:absolute) {
+    position: @pos;
+    left: 50%;
+    top: 50%;
+    .transform(translate(-50%,-50%));
+}
+
+.absolute-cover(@position:absolute){
+    position: @position;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+/**
+ * Font
+ */
+.font-size(@px, @base: 14px) {
+    font-size: @px;
+    font-size: (@px / @base) * 1rem;
+}
+
+.list-unstyled(@padding: 0, @margin: 0){
+    list-style: none;
+    padding: @padding;
+    margin: @margin;
+}
+
+/**
+ * Forms
+ */
+.input-placeholder-color(@color) {
+    &::-webkit-input-placeholder {
+        color: @color;
+    }
+
+    &:-moz-placeholder {
+        color: @color;
+        opacity: 1;
+    }
+
+    &::-moz-placeholder {
+        color: @color;
+        opacity: 1;
+    }
+
+    &:-ms-input-placeholder {
+        color: @color;
+    }
+}
+
+/**
+ * Shape Constructors
+ */
+.circle(@size, @color) {
+    width: @size;
+    height: @size;
+    border-radius: 50%;
+    background-color: @color;
+}
+
+.triangle(@size, @color, @orientation: up) {
+    width: 0;
+    height: 0;
+
+    & when (@orientation = up) {
+        border-left: @size solid transparent;
+        border-right: @size solid transparent;
+        border-bottom: @size solid @color;
+    }
+
+    & when (@orientation = down) {
+        border-left: @size solid transparent;
+        border-right: @size solid transparent;
+        border-top: @size solid @color;
+    }
+
+    & when (@orientation = left) {
+        border-top: @size solid transparent;
+        border-bottom: @size solid transparent;
+        border-right: @size solid @color;
+    }
+
+    & when (@orientation = right) {
+        border-top: @size solid transparent;
+        border-bottom: @size solid transparent;
+        border-left: @size solid @color;
+    }
+}
+
+/**
+ * Box Model
+ */
+.clearfix {
+    zoom: 1;
+
+    &:before,
+    &:after {
+        content: '';
+        display: table;
+    }
+
+    &:after{
+        clear: both;
+    }
+}

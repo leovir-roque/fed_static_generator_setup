@@ -1,0 +1,38 @@
+/**
+ * Media
+ *
+ * Notes:
+ * 1. Force !important so it won't get overriden
+ *    as this utility's main purpose is to add this style
+ */
+.media {
+    /* Tablets */
+    &--hidden\@tablet {
+        @media (max-width: @breakpoint-tablet) {
+            display: none!important;
+        }
+    }
+
+    &--available\@tablet {
+        display: none;
+
+        @media (max-width: @breakpoint-tablet) {
+            display: block;
+        }
+    }
+
+    /* Mobiles */
+    &--hidden\@mobile {
+        @media (max-width: @breakpoint-mobile) {
+            display: none!important;
+        }
+    }
+
+    &--available\@mobile {
+        display: none;
+
+        @media (max-width: @breakpoint-mobile) {
+            display: block;
+        }
+    }
+}

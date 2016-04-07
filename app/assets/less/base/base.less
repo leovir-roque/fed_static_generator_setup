@@ -1,0 +1,52 @@
+*,
+input[type="search"] {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+    &:focus {
+        outline: 0;
+    }
+}
+
+html {
+    font-size: @font-size;
+}
+
+body {
+    font-famiy: @font-family;
+}
+
+figure {
+    margin: 0;
+}
+
+ul,
+ol {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/**
+ * Typography
+ */
+h1, h2, h3, h4, h5, h6{
+    margin-top: 0;
+}
+
+strong {
+    font-weight: @font-weight-bold;
+}
+
+/**
+ * Forms
+ */
+fieldset {
+    padding: 0;
+    border: none;
+}
+
+textarea, input{
+    -webkit-font-smoothing:antialiased;
+}

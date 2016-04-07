@@ -1,0 +1,11 @@
+<nav>
+    <ul>
+        {{#each pages}}
+            {{#is data.section "main"}}
+                <li {{#is ../../page.dest this.dest}} class="is-active"{{/is}}>
+                    <a href="{{relative ../../page.dest this.dest}}">{{data.title}}</a>
+                </li>
+            {{/is}}
+        {{/each}}
+    </ul>
+</nav>

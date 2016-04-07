@@ -1,0 +1,15 @@
+<footer>
+    <nav>
+        <ul>
+            {{#each pages}}
+                {{#isnt data.exclude_from_footer true}}
+                    <li>
+                        <a href="{{relative ../../page.dest this.dest}}">{{data.title}}</a>
+                    </li>
+                {{/isnt}}
+            {{/each}}
+        </ul>
+    </nav>
+
+    <p>Copyright 2016 {{site.name}}</p>
+</footer>

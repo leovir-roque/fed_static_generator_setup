@@ -1,0 +1,1 @@
+# fed_static_generator_setup
