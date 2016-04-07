@@ -41,7 +41,7 @@ A Front End Developer setup using: Assemble, LESS (css pre-processor) and browse
           {{/is}}
       {{/each}}
     
-  Loops all files in the pages folder then look for files that have this setting in the page.hbs
+  Loops all files in the pages folder that has this configuration
       ---
       section: main
       ---
