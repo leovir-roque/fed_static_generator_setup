@@ -38,7 +38,7 @@ module.exports = function (grunt) {
         assemble: {
             options: {
                 layout: ['app/templates/layouts/default.hbs'],
-                partials: ['app/templates/partials/**/*.hbs'],
+                partials: ['app/templates/partials/**/**/*.hbs'],
                 data: ['app/templates/data/*.{json,yml}'],
                 flatten: true
             },
@@ -65,7 +65,7 @@ module.exports = function (grunt) {
         },
         watch: {
             less: {
-                files: ["app/assets/less/**/*.less"],
+                files: ["app/assets/less/**/**/*.less"],
                 tasks: ["less"]
             },
             js: {

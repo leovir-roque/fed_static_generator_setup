@@ -1,11 +1,11 @@
 <nav>
     <ul>
-        {{#each pages}}
+        {{#withSort pages "data.sortOrder"}}
             {{#is data.section "main"}}
                 <li {{#is ../../page.dest this.dest}} class="is-active"{{/is}}>
-                    <a href="{{relative ../../page.dest this.dest}}">{{data.title}}</a>
+                    <a href="{{relative ../../page.dest this.dest}}">{{data.sectionName}}</a>
                 </li>
             {{/is}}
-        {{/each}}
+        {{/withSort}}
     </ul>
 </nav>

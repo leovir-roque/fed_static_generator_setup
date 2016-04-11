@@ -1,13 +1,13 @@
 <footer>
     <nav>
         <ul>
-            {{#each pages}}
+            {{#withSort pages "data.sortOrder"}}
                 {{#isnt data.exclude_from_footer true}}
                     <li>
-                        <a href="{{relative ../../page.dest this.dest}}">{{data.title}}</a>
+                        <a href="{{relative ../../page.dest this.dest}}">{{data.sectionName}}</a>
                     </li>
                 {{/isnt}}
-            {{/each}}
+            {{/withSort}}
         </ul>
     </nav>
 

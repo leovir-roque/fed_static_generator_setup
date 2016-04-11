@@ -265,11 +265,10 @@
 /**
  * Shape Constructors
  */
-.circle(@size, @color) {
+.circle(@size) {
     width: @size;
     height: @size;
     border-radius: 50%;
-    background-color: @color;
 }
 
 .triangle(@size, @color, @orientation: up) {
@@ -277,26 +276,26 @@
     height: 0;
 
     & when (@orientation = up) {
-        border-left: @size solid transparent;
-        border-right: @size solid transparent;
+        border-left: @size - (@size/4) solid transparent;
+        border-right: @size - (@size/4) solid transparent;
         border-bottom: @size solid @color;
     }
 
     & when (@orientation = down) {
-        border-left: @size solid transparent;
-        border-right: @size solid transparent;
+        border-left: @size - (@size/4) solid transparent;
+        border-right: @size - (@size/4) solid transparent;
         border-top: @size solid @color;
     }
 
     & when (@orientation = left) {
-        border-top: @size solid transparent;
-        border-bottom: @size solid transparent;
+        border-top: @size - (@size/4) solid transparent;
+        border-bottom: @size - (@size/4) solid transparent;
         border-right: @size solid @color;
     }
 
     & when (@orientation = right) {
-        border-top: @size solid transparent;
-        border-bottom: @size solid transparent;
+        border-top: @size - (@size/4) solid transparent;
+        border-bottom: @size - (@size/4) solid transparent;
         border-left: @size solid @color;
     }
 }

@@ -61,27 +61,28 @@ $ grunt serve
 
 ```bash
   ** For Header navigation in nav.hbs **
-      {{#each pages}}
+      {{#withSort pages "data.sortOrder"}}
           {{#is data.section "main"}}
               <li {{#is ../../page.dest this.dest}} class="is-active"{{/is}}>
-                  <a href="{{relative ../../page.dest this.dest}}">{{data.title}}</a>
+                  <a href="{{relative ../../page.dest this.dest}}">{{data.sectionName}}</a>
               </li>
           {{/is}}
-      {{/each}}
+      {{/withSort}}
 
-  ** Loops all files in the pages folder that has this configuration **
+  ** Loops all files in the pages folder that has the section: main configuration and sorts it depending on the order **
       ---
       section: main
+      sortOrder: 1
       ---
 
   ** For footer.hbs **
-      {{#each pages}}
+      {{#withSort pages "data.sortOrder"}}
           {{#isnt data.exclude_from_footer true}}
               <li>
-                  <a href="{{relative ../../page.dest this.dest}}">{{data.title}}</a>
+                  <a href="{{relative ../../page.dest this.dest}}">{{data.sectionName}}</a>
               </li>
           {{/isnt}}
-      {{/each}}
+      {{/withSort}}
 
   ** Loops all the files in the pages folder except for files that have this configuration **
       ---
